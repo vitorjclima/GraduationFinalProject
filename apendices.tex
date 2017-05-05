@@ -1,0 +1,56 @@
+% ---
+% Inicia os apêndices
+% ---
+\begin{apendicesenv}
+
+% Imprime uma página indicando o início dos apêndices
+\partapendices
+
+% ----------------------------------------------------------
+\chapter{Scripts de Instalação e Configuração}
+% ----------------------------------------------------------
+Os arquivos \textit{install.sh, download.sh, configurate.sh, start.sh, stop.sh, automacao.sh, cassandra\_keyspace.txt, configuration.properties, apt.conf, setenv.sh e solr.xml} fazem parte do processo de automação de funcionamento do projeto Maritaca, citado no Capítulo \ref{cap:dificuldadesEncontradas}.
+
+\section*{install.sh}
+\input{scripts/install.tex}
+
+\section*{download.sh}
+\input{scripts/download.tex}
+
+\section*{configurate.sh}
+\input{scripts/configurate.tex}
+
+\section*{start.sh}
+\input{scripts/start.tex}
+
+\section*{stop.sh}
+\input{scripts/stop.tex}
+
+\section*{automacao.sh}
+\input{scripts/automacao.tex}
+
+\section*{cassandra\_keyspace.txt}
+\input{scripts/cassandra_keyspace.tex}
+
+\section*{configuration.properties}
+\input{scripts/configuration.properties.tex}
+
+\section*{apt.conf}
+\input{scripts/apt.conf.tex}
+
+\section*{setenv.sh}
+\input{scripts/setenv.tex}
+
+\section*{solr.xml}
+\input{scripts/solr.xml.tex}
+
+
+\chapter{JMeter e CassJMeter - \textit{xml} gerado para os testes}
+
+Após a ferramente ser configurada, é possível visualizar os parâmetros utilizados no teste através de um arquivo \textit{.xml} gerado pelo próprio JMeter. O arquivo \textit{Cenario1.jmx} exibe os parâmetros utilizados nos testes do Cenário 1 com um usuário. 
+
+\section*{Cenario1.jmx}
+\input{scripts/cenario.tex}
+
+\end{apendicesenv}
+% ---

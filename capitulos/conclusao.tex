@@ -1,0 +1,20 @@
+Atualmente a Computação em Nuvem é utilizada principalmente por grandes serviços que surgem na internet e também por empresas
+com usos particulares. Seu uso tem sido buscado e estudado principalmente pelo fato dos custos estarem sempre relacionados ao real uso dos recursos, capacidade essa possível por
+sua característica elástica e adaptativa, e com o auxílio do monitoramento de seus requisitos não funcionais é possível aumentar seu valor agregado.
+
+Essas duas características têm sido buscadas principalmente por empresas que lançam novos serviços, pois o aumento dos gastos envolvidos em seu processo de criação não é desejável. No modelo de Computação em Nuvem, a capacidade computacional pode ser ajustada de acordo com a demanda. Com isso, tem-se uma cobrança de forma mais adequada sobre os diversos perfis de clientes. A utilização de uma estrutura flexível e escalável, com melhor utilização dos recursos computacionais pode trazer consideráveis retornos financeiros para uma organização, a qual pode aproveitar a capacidade ociosa disponível e já paga e implementar novas aplicações, sem aumento dos gastos com hardware, além de que o uso de infraestrutura disponibilizada por terceiros elimina as tediosas e custosas tarefas burocráticas de gerenciar o parque tecnológico.
+
+Com a realização deste trabalho foi possível concluir que o entendimento e configuração de sistemas que funcionam utilizando a computação em nuvem não é algo simples. Deve-se realizar um levantamento das melhores e mais estáveis ferramentas para se configurar este tipo de ambiente. É nesta etapa que são avaliados aspectos como: elasticidade, robustez, escalabilidade, estabilidade, entre outras características necessárias para a configuração, que melhor atenda os sistemas que serão hospedados.
+
+
+Os projetos que dependem desta tecnologia e são desenvolvidos por pequenas ou grandes equipes precisam ser bem documentados, de forma a facilitar que um novo membro da equipe consiga entender e contribuir para a evolução do projeto. A principal dificuldade encontrada durante a realização deste trabalho foi justamente relacionada a documentação deficiente do projeto Maritaca.
+
+As deficiências de documentação iam desde a instalação até a configuração dos \textit{softwares} necessários para que o projeto funcionasse. Com isso, surgiu a necessidade da criação de \textit{scripts} que realizassem esta tarefa automaticamente.
+
+A elaboração destes \textit{scripts} foi a tarefa que mais demandou tempo deste trabalho de conclusão de curso e era desejável, para que fosse possível realizar testes com todas as ferramentas necessárias para o funcionamento deste sistema, de modo que, o ambiente em nuvem deste projeto fosse o mais otimizado possível para esta aplicação.
+
+Após finalizados estes \textit{scripts} foram iniciados os testes com a base de dados Cassandra. Nestes, não foi possível avaliar a escalabilidade do Cassandra devido ao modo com que os cenários foram implementados, conforme citado na seção \ref{sec:analResul}.
+
+Mesmo os resultados dos testes não sendo os esperados, esta foi a base de dados escolhida para o funcionamento do projeto Maritaca. Pois ele utiliza praticamente operações de escrita e atualização na base de dados e conforme ressaltado no Capítulo \ref{cap:cassandra}, o Cassandra realiza estas operações eficientemente. 
+
+Sendo assim, sugere-se realizar em um futuro trabalho testes práticos com todas as ferramentas que o projeto Maritaca utiliza. Em especial, executar novos testes com o Cassandra, utilizando uma disposição diferente das máquinas onde a base de dados e a ferramenta responsável pelos testes estão instaladas.

@@ -1,0 +1,349 @@
+% Modelo de TCC do Bacharelado em Ciência da Computação da UNIFESP 
+% Baseado no Modelo de Documentos Academicos do ABNTex2  
+
+\documentclass[	12pt, openright, twoside, a4paper, english, brazil]{abntex2}
+
+
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{cmap}				% Mapear caracteres especiais no PDF
+\usepackage{times}
+\usepackage[T1]{fontenc}			% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}			% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{subfig}
+\usepackage{minted}
+\usepackage{xspace}
+\usepackage{setspace}
+\usepackage[verbose,a4paper,left=23mm,right=23mm,top=30mm,bottom=23mm]{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath,amsthm}
+\usepackage{url}
+\usepackage{fancyvrb}
+\usepackage{acronym}
+%\usepackage{fancyhdr}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage[table,xcdraw]{xcolor}
+
+\usepackage{listings} % para importação de códigos fonte
+
+% Definindo novas cores
+\definecolor{verdecpp}{rgb}{0,0.5,0}
+\definecolor{verdejava}{rgb}{0.25,0.5,0.35}
+\definecolor{jpurple}{rgb}{0.5,0,0.35}
+\definecolor{forestgreen}{RGB}{34,139,34}
+\definecolor{orangered}{RGB}{239,134,64}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+
+\lstdefinestyle{bash}
+{
+alsolanguage={Bash},
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue},
+stringstyle=\color{verdecpp},
+commentstyle=\color{gray},
+extendedchars=true,
+showspaces=false,
+showstringspaces=false,
+%numbers=left,
+numberstyle=\tiny,
+breaklines=true,
+backgroundcolor=\color{green!10},
+breakautoindent=true,
+captionpos=b,
+xleftmargin=0pt,
+}
+
+\lstdefinestyle{xml}
+{
+language={XML},
+basicstyle=\ttfamily\small,
+stringstyle=\color{jpurple},
+commentstyle=\color{gray},
+extendedchars=true,
+showspaces=false,
+showstringspaces=false,
+%numbers=left,
+numberstyle=\tiny,
+breaklines=true,
+backgroundcolor=\color{green!10},
+breakautoindent=true,
+captionpos=b,
+xleftmargin=0pt,
+morestring=[b]",
+morecomment=[s]{<?}{?>},
+morecomment=[s][\color{forestgreen}]{<!--}{-->},
+keywordstyle=\color{orangered},
+tagstyle=\color{darkblue},
+morekeywords={attribute,xmlns,version,type,release},
+}
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% numeração de figuras e tabelas 
+\counterwithout{figure}{section}
+\counterwithout{table}{section}
+
+%\renewcommand\tablename{Tabela{\arabic{chapter}.}}
+
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Estudo sobre Computação em Nuvem e análise de desempenho em bases Cassandra}
+\autor{Vitor José Camargo de Lima}
+\local{São José dos Campos, SP}
+\data{Junho de 2015}
+\orientador{Prof. Dr. Arlindo Flavio da Conceição}
+\instituicao{%
+  Universidade Federal de São Paulo -- UNIFESP
+  \par
+  Instituto de Ciência de Tecnologia
+  \par
+  Bacharelado em Ciência da Computação}
+\tipotrabalho{Trabalho de Graduação}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho de conclusão de curso apresentado ao Instituto de Ciência e Tecnologia - UNIFESP, como parte das atividades para obtenção do título de Bacharel em Ciência da Computação.}
+% ---
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=false,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+
+\makeatother
+% --- 
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+% ---
+
+% compila o indice
+% ---
+\makeindex
+% ---
+
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+%\pretextual
+
+
+% Capa
+\clearpage
+\input{capa.tex}
+
+
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+\imprimirfolhaderosto*
+
+
+% Folha de aprovação
+\clearpage
+\input{aprovacao.tex}
+
+
+% Dedicatória
+%\clearpage
+\input{dedicatoria.tex}
+
+
+% Agradecimentos
+\clearpage
+\input{agradecimentos.tex}
+
+
+% Resumo
+\input{resumo.tex}
+
+
+% Abstract
+\input{abstract.tex}
+
+
+% Lista de ilustrações
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+
+% Lista de tabelas
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+
+% Lista de abreviaturas e siglas
+\clearpage
+\input{abreviacoesesiglas.tex}
+
+
+% Sumario
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+
+% Introdução
+\chapter{Introdução}
+\label{cap:introducao}
+\input{capitulos/introducao}
+
+
+% Fundamentação Teórica
+\chapter{Revisão sobre Computação em Nuvem}
+\label{cap:fundTeorica}
+\input{capitulos/fundamentacaoTeorica}
+
+% Ferramentas Utilizadas
+\chapter{Ferramentas Estudadas}
+\label{cap:ferramentas}
+\input{capitulos/ferramentasUtilizadas}
+
+% Ambiente Experimental
+\chapter{Ambiente Experimental}
+\label{cap:ambExperimental}
+\input{capitulos/ambienteExp}
+
+
+% Banco de Dados Distribuído
+\chapter{Cassandra operando em \textit{cluster}}
+\label{cap:cassandra}
+\input{capitulos/cassandra}
+
+% Analise Performance
+\chapter{Revisão sobre análise de desempenho}
+\label{cap:analisePerformance}
+\input{capitulos/analisePerformance}
+
+% ---
+% primeiro capitulo de Resultados
+% ---
+\chapter{Simulações e Resultados}
+\label{cap:resultados}
+\input{capitulos/resultados}
+
+
+%---
+% dificuldades encontradas
+%---
+\chapter{Dificuldades Encontradas}
+\label{cap:dificuldadesEncontradas}
+\input{capitulos/dificuldades}
+
+
+% ---
+% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ---
+% Conclusão
+% ---
+\chapter{Considerações Finais}
+\label{cap:conclusoes}
+\input{capitulos/conclusao.tex}
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{bibliografia/references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+\clearpage
+\input{apendices.tex}
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+%\clearpage
+%\input{anexos.tex}
+
+\end{document}

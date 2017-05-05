@@ -1,0 +1,24 @@
+Este capítulo descreve a complexidade da implantação de projetos distribuídos ao longo deste trabalho. Devido a esta complexidade foi necessário fazer uma revisão no objetivo inicial do trabalho que era realizar o estudo dos modelos de escalabilidade em Computação em Nuvem para o projeto Maritaca, porém acabou por ficar restrito à escalabilidade, elasticidade e robustez do banco de dados distribuído (Cassandra).
+
+
+O projeto Maritaca (\textbf{MAR}itaca \textbf{I}s a \textbf{T}ool to cre\textbf{A}te \textbf{C}ellular phone \textbf{A}pplications) busca suprir as necessidades de automatizar o processo de coleta de dados móveis (CMD) provendo uma infraestrutura baseada na nuvem para criação de aplicativos móveis para \textit{smartphones} Android (\textit{apks}\footnote{Arquivos executáveis Android.}). Esses aplicativos representam os formulários digitais. O Maritaca proporciona uma \textit{interface web} interativa para a concepção do formulário e o gerenciamento das informações coletadas. O projeto possui três vertentes principais: a aplicação móvel Android, os serviços web e os repositórios de dados. 
+
+
+O estudo dos modelos dependia preliminarmente do funcionamento pleno do sistema Maritaca, o que não ocorreu. Para automatizar o processo de download, instalação e configuração de pacotes essenciais para o funcionamento do sistema, foi necessário alterar o foco inicial deste trabalho para a criação de \textit{scripts} que realizassem o trabalho inicial. Porém, durante a criação destes, o projeto Maritaca demonstrou incompatibilidade de versões dos pacotes e/ou documentação deficiente do projeto com diversas distribuições Linux.
+
+Primeiramente, foi decidido testar o processo de instalação no sistema operacional Ubuntu Server 14.04.2. Em função de diversos problemas, tentou-se utilizar outros sistemas operacionais, tais como OpenSuse 12, CentOS 7 e Fedora 21.
+
+No OpenSuse foi detectado problemas na resolução de dependências dos pacotes utilizados pelo Maritaca. Durante a instalação dos pacotes, os mesmos apresentavam falhas em função do sistema operacional não resolver as dependências exigidas pelos pacotes.
+
+No sistema CentOS, os pacotes exigidos pelo Maritaca foram instalados com sucesso. Porém, ao iniciar o projeto compilado, este retornara erro 404, motivo que não se conseguiu resolver.
+
+Após o teste em diversos sistemas operacionais, descobriu-se que a versão do Maven utilizada para compilação do projeto estava com problemas na indexação dos pacotes utilizados pelo projeto. Em função disto, optou-se por alterar a versão do Maven, de 2 para 3, e reiniciou-se a criação dos scripts no sistema operacional Ubuntu Server 14.04.2.
+
+Ainda assim, o TomCat não conseguia iniciar o projeto compilado. Por isto, iniciou-se a depuração do log do TomCat, onde detectou-se ser fundamental a criação da pasta hadoop\_mounted dentro na pasta var do sistema operacional. Porém novamente o TomCat apresentou falhas ao iniciar o projeto.
+
+Desta forma, optou-se pela utilização do sistema operacional Fedora 21. Durante a instalação do Maven 3, verificou-se que o mesmo exigia a versão 1.8 do Java Open JDK, e ao compilar o projeto com esta versão do Java, novos problemas surgiram. Sendo assim, retomou-se a criação dos \textit{scripts} utilizando o Ubuntu Server 14.04.2.
+
+O projeto foi então recompilado utilizando-se a versão 1.6 do Java, e iniciou-se o servidor TomCat utilizando o novo arquivo compilado, desta vez, o projeto executou com sucesso.
+
+Ao testar a geração de aplicativos com o auxílio do Maritaca, este não conseguia gerar os \textit{apks}. Ao realizar nova depuração do log do TomCat, detectou-se a ausência de pacotes fundamentais do Android SDK para a geração dos apks. Foram então inseridos no Android SDK um conjunto de pacotes obsoletos. Testou-se novamente a geração dos apks e novo erro surgiu no log do TomCat, indicando que outras dependências do Android SDK não estavam instaladas. Instalou-se as dependências exigidas (\textit{lib32z1, lib32ncurses5, lib32bz2-1.0 e lib32stdc++6}). Com isto, a geração dos \textit{apks} pelo Maritaca passou a funcionar com sucesso.
+
